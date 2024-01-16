@@ -1,12 +1,17 @@
 #root {
+  height: 100vh;
+}
+
+#boxContainer {
   display: grid;
   grid-template-areas:
     "menu main"
-    "library main"
-    "player player";
-  grid-template-columns: 4fr 11fr;
-  grid-template-rows: 1fr 5fr 1fr;
-  height: 100vh;
+    "library main";
+  grid-template-columns: 4fr minmax(auto, 11fr);
+  grid-template-rows: 1fr 5fr;
+  gap: 7px;
+  padding: 7px;
+  height: 85%;
 }
 
 #menuBox {
@@ -22,8 +27,13 @@
 }
 
 #playerBox {
-  grid-area: player;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.appBox {
+  background-color: var(--primary-bg-color);
+  border-radius: 7px;
+  padding: 10px;
 }

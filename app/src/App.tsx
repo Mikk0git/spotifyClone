@@ -8,18 +8,24 @@ function App() {
 
   return (
     <>
-      <div id="menuBox">
-        <h3>Home</h3>
-        <h3>Search</h3>
-      </div>
-      <div id="yourLibraryBox">
-        <h3>Your Library</h3>
-      </div>
-      <div id="mainBox">
-        <div id="recentlyPlayed">
-          <h3>Recently Played</h3>
-          <h3>Made For You</h3>
-          <h3>Episodes for you</h3>
+      <div id="boxContainer">
+        <div id="menuBox" className="appBox">
+          <div id="menuBoxHome">
+            <h4>Home</h4>
+          </div>
+          <div id="menuBoxSearch">
+            <h4>Search</h4>
+          </div>
+        </div>
+        <div id="yourLibraryBox" className="appBox">
+          <h4>Your Library</h4>
+        </div>
+        <div id="mainBox" className="appBox">
+          <div id="recentlyPlayed">
+            <h4>Recently Played</h4>
+            <h4>Made For You</h4>
+            <h4>Episodes for you</h4>
+          </div>
         </div>
       </div>
       <div id="playerBox">player</div>
