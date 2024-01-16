@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import "./App.css";
+import { LibraryListElement } from "./components/LibraryListElement";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -13,17 +13,28 @@ function App() {
           <ul>
             <li id="menuBoxHome" className="menuBoxElement">
               <span className="material-symbols-outlined">home</span>
-              <span className="normalText boxMenuText">Home</span>
+              <span className="normalText textMargin">Home</span>
             </li>
             <li id="menuBoxSearch" className="menuBoxElement">
               <span className="material-symbols-outlined">search</span>
-              <span className="normalText boxMenuText">Search</span>
+              <span className="normalText textMargin">Search</span>
             </li>
           </ul>
         </div>
         <div id="yourLibraryBox" className="appBox">
-          <span className="normalText">Your Library</span>
+          <div id="menuBoxYourLibrary" className="menuBoxElement">
+            <span className="material-symbols-rounded">menu</span>
+            <span className="normalText textMargin">Your Library</span>
+          </div>
+          <div id="libraryList">
+            <LibraryListElement />
+            <LibraryListElement />
+            <LibraryListElement />
+            <LibraryListElement />
+            <LibraryListElement />
+          </div>
         </div>
+
         <div id="mainBox" className="appBox">
           <div id="recentlyPlayed">
             <span className="normalText">Recently Played</span>

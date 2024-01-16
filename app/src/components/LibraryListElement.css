@@ -1,0 +1,19 @@
+.libraryListElement {
+  display: flex;
+  margin: 5px 0 5px 0;
+}
+.libraryListImg {
+  width: 50px;
+  border-radius: 2px;
+}
+
+.libraryListElementInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.libraryListElementInfoAuthor {
+  font-size: medium;
+  color: var(--secondary-font-color);
+}
