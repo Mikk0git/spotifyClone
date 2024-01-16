@@ -27,11 +27,18 @@ function App() {
             <span className="normalText textMargin">Your Library</span>
           </div>
           <div id="libraryList">
-            <LibraryListElement />
-            <LibraryListElement />
-            <LibraryListElement />
-            <LibraryListElement />
-            <LibraryListElement />
+            <LibraryListElement
+              title="Towards the Lonely Wind"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs1.png"
+            />
+            <LibraryListElement
+              title="Echoes of the Azure Sky"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs2.png"
+            />
           </div>
         </div>
 

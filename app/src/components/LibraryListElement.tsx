@@ -1,13 +1,25 @@
 import "./LibraryListElement.css";
 
-export function LibraryListElement() {
+interface LibraryListElementProps {
+  title: string;
+  artist: string;
+  type: string;
+  imgPath: string;
+}
+
+export function LibraryListElement({
+  title,
+  artist,
+  type,
+  imgPath,
+}: LibraryListElementProps) {
   return (
     <div className="libraryListElement">
-      <img src="/bs1.png" alt="" className="libraryListImg" />
+      <img src={imgPath} alt="" className="libraryListImg" />
       <div className="libraryListElementInfo textMargin">
-        <span className="normalText ">Towards the Lonely Wind</span>
+        <span className="normalText ">{title}</span>
         <span className="libraryListElementInfoAuthor ">
-          Album • Blissing Stratus
+          {type} • {artist}
         </span>
       </div>
     </div>
