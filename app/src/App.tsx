@@ -10,21 +10,25 @@ function App() {
     <>
       <div id="boxContainer">
         <div id="menuBox" className="appBox">
-          <div id="menuBoxHome">
-            <h4>Home</h4>
-          </div>
-          <div id="menuBoxSearch">
-            <h4>Search</h4>
-          </div>
+          <ul>
+            <li id="menuBoxHome" className="menuBoxElement">
+              <span className="material-symbols-outlined">home</span>
+              <span className="normalText boxMenuText">Home</span>
+            </li>
+            <li id="menuBoxSearch" className="menuBoxElement">
+              <span className="material-symbols-outlined">search</span>
+              <span className="normalText boxMenuText">Search</span>
+            </li>
+          </ul>
         </div>
         <div id="yourLibraryBox" className="appBox">
-          <h4>Your Library</h4>
+          <span className="normalText">Your Library</span>
         </div>
         <div id="mainBox" className="appBox">
           <div id="recentlyPlayed">
-            <h4>Recently Played</h4>
-            <h4>Made For You</h4>
-            <h4>Episodes for you</h4>
+            <span className="normalText">Recently Played</span>
+            <span className="normalText">Made For You</span>
+            <span className="normalText">Episodes for you</span>
           </div>
         </div>
       </div>

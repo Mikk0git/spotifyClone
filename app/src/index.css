@@ -32,10 +32,10 @@ body {
   padding: 0;
   min-width: 320px;
 }
-/* 
+
 h4 {
-  line-height: 1;
-} */
+  line-height: 0.2;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -48,4 +48,18 @@ h4 {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.normalText {
+  font-weight: 700;
+  font-size: medium;
 }
