@@ -1,5 +1,6 @@
 #libraryBox {
   grid-area: library;
+  overflow: hidden;
 }
 
 #libraryList {

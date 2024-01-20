@@ -8,8 +8,8 @@
     "menu main"
     "library main"
     "player player";
-  grid-template-columns: 340px auto;
-  grid-template-rows: 20% 70% auto;
+  grid-template-columns: 340px minmax(340px, auto);
+  grid-template-rows: 100px minmax(70%, auto) minmax(auto, 150px);
   padding: 7px;
   gap: 7px;
   height: calc(100vh - 14px);
@@ -34,7 +34,7 @@
 
 #mainBox {
   grid-area: main;
-  /* overflow: hidden; */
+  overflow: hidden;
   /* height: 95%; */
 }
 

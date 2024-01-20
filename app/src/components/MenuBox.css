@@ -1,5 +1,8 @@
 #menuBox {
   grid-area: menu;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 #menuBox li:not(:last-child) {
@@ -9,8 +12,4 @@
 .menuBoxElement {
   display: flex;
   align-items: center;
-}
-
-#mainBox {
-  grid-area: main;
 }
