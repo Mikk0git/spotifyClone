@@ -1,0 +1,8 @@
+#libraryBox {
+  grid-area: library;
+}
+
+#libraryList {
+  height: 98%;
+  overflow-y: scroll;
+}

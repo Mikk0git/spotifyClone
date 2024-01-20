@@ -15,33 +15,8 @@
   height: calc(100vh - 14px);
 }
 
-#yourLibraryBox {
-  grid-area: library;
-}
-
-#libraryList {
-  height: 98%;
-  overflow-y: scroll;
-}
-#menuBox {
-  grid-area: menu;
-}
-
-#menuBox li:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.menuBoxElement {
-  display: flex;
-  align-items: center;
-}
-
 .textMargin {
   margin-left: 15px;
-}
-
-#mainBox {
-  grid-area: main;
 }
 
 #playerBox {

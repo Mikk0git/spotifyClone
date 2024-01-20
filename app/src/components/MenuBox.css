@@ -1,0 +1,16 @@
+#menuBox {
+  grid-area: menu;
+}
+
+#menuBox li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.menuBoxElement {
+  display: flex;
+  align-items: center;
+}
+
+#mainBox {
+  grid-area: main;
+}
