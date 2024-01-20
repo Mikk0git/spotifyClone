@@ -1,19 +1,28 @@
 #root {
-  height: 100vh;
+  height: 100dvh;
 }
 
-#boxContainer {
+#appContainer {
   display: grid;
   grid-template-areas:
     "menu main"
-    "library main";
-  grid-template-columns: 4fr minmax(auto, 11fr);
-  grid-template-rows: 1fr 5fr;
-  gap: 7px;
+    "library main"
+    "player player";
+  grid-template-columns: 340px auto;
+  grid-template-rows: min-content 70% auto;
   padding: 7px;
-  height: 85%;
+  gap: 7px;
+  height: calc(100vh - 14px);
 }
 
+#yourLibraryBox {
+  grid-area: library;
+}
+
+#libraryList {
+  height: 98%;
+  overflow-y: scroll;
+}
 #menuBox {
   grid-area: menu;
 }
@@ -31,15 +40,12 @@
   margin-left: 15px;
 }
 
-#libraryBox {
-  grid-area: library;
-}
-
 #mainBox {
   grid-area: main;
 }
 
 #playerBox {
+  grid-area: player;
   display: flex;
   justify-content: center;
   align-items: center;

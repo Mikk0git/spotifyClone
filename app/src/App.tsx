@@ -8,7 +8,8 @@ function App() {
 
   return (
     <>
-      <div id="boxContainer">
+      <div id="appContainer">
+        {/* <div id="sidePanelBox"> */}
         <div id="menuBox" className="appBox">
           <ul>
             <li id="menuBoxHome" className="menuBoxElement">
@@ -39,18 +40,81 @@ function App() {
               type="Album"
               imgPath="/bs2.png"
             />
+            <LibraryListElement
+              title="Towards the Lonely Wind"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs1.png"
+            />
+            <LibraryListElement
+              title="Echoes of the Azure Sky"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs2.png"
+            />{" "}
+            <LibraryListElement
+              title="Towards the Lonely Wind"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs1.png"
+            />
+            <LibraryListElement
+              title="Echoes of the Azure Sky"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs2.png"
+            />{" "}
+            <LibraryListElement
+              title="Towards the Lonely Wind"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs1.png"
+            />
+            <LibraryListElement
+              title="Echoes of the Azure Sky"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs2.png"
+            />{" "}
+            <LibraryListElement
+              title="Towards the Lonely Wind"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs1.png"
+            />
+            <LibraryListElement
+              title="Echoes of the Azure Sky"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs2.png"
+            />{" "}
+            <LibraryListElement
+              title="Towards the Lonely Wind"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs1.png"
+            />
+            <LibraryListElement
+              title="Echoes of the Azure Sky"
+              artist="Blissing Stratus"
+              type="Album"
+              imgPath="/bs2.png"
+            />
           </div>
         </div>
-
         <div id="mainBox" className="appBox">
           <div id="recentlyPlayed">
             <span className="normalText">Recently Played</span>
+          </div>
+          <div id="madeForYou">
             <span className="normalText">Made For You</span>
+          </div>
+          <div id="episodesForYou">
             <span className="normalText">Episodes for you</span>
           </div>
         </div>
+        <div id="playerBox">player</div>
       </div>
-      <div id="playerBox">player</div>
     </>
   );
 }
