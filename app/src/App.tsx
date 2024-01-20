@@ -103,6 +103,24 @@ function App() {
           </div>
         </div>
         <div id="mainBox" className="appBox">
+          <div id="mainButtonsBar">
+            <div id="mainArrows" className="buttonGroup">
+              <div className="mainBoxButton">
+                <span className="material-symbols-outlined">chevron_left</span>
+              </div>
+              <div className="mainBoxButton">
+                <span className="material-symbols-outlined">chevron_right</span>
+              </div>
+            </div>
+            <div id="mainOtherButtons" className="buttonGroup">
+              <div className="mainBoxButton">
+                <span className="material-symbols-outlined">notifications</span>
+              </div>
+              <div className="mainBoxButton">
+                <span className="material-symbols-outlined">person</span>
+              </div>
+            </div>
+          </div>
           <div id="recentlyPlayed">
             <span className="normalText">Recently Played</span>
           </div>

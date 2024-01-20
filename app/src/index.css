@@ -7,6 +7,7 @@
   --primary-bg-color: #121212;
   --primary-font-color: #ffffff;
   --secondary-font-color: #858585;
+  --button-color: #050505;
 
   color-scheme: light dark;
   color: var(--primary-font-color);
@@ -51,7 +52,7 @@ h4 {
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+  font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 0, "opsz" 24;
 }
 
 ul {

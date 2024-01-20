@@ -54,5 +54,29 @@
 .appBox {
   background-color: var(--primary-bg-color);
   border-radius: 7px;
-  padding: 15px;
+  padding: 16px;
+}
+
+#mainButtonsBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainBoxButton {
+  border-radius: 100%;
+  background-color: var(--button-color);
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.5em 0 0.5em;
 }
