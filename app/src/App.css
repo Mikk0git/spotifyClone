@@ -9,7 +9,7 @@
     "library main"
     "player player";
   grid-template-columns: 340px auto;
-  grid-template-rows: min-content 70% auto;
+  grid-template-rows: 20% 70% auto;
   padding: 7px;
   gap: 7px;
   height: calc(100vh - 14px);
@@ -30,6 +30,12 @@
   background-color: var(--primary-bg-color);
   border-radius: 7px;
   padding: 16px;
+}
+
+#mainBox {
+  grid-area: main;
+  /* overflow: hidden; */
+  /* height: 95%; */
 }
 
 #mainButtonsBar {

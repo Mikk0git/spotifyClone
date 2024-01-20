@@ -5,4 +5,5 @@
 #libraryList {
   height: 98%;
   overflow-y: scroll;
+  overflow-x: hidden;
 }

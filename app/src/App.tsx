@@ -4,7 +4,7 @@ import "./App.css";
 import { MenuBox } from "./components/MenuBox";
 import { LibraryBox } from "./components/LibraryBox";
 import { PlayerBox } from "./components/PlayerBox";
-import { HomePanel } from "./components/HomePanel";
+import { HomePanel } from "./components/homePanel/HomePanel";
 
 function App() {
   // const [count, setCount] = useState(0)

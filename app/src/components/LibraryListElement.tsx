@@ -18,7 +18,7 @@ export function LibraryListElement({
       <img src={imgPath} alt="" className="libraryListImg" />
       <div className="libraryListElementInfo textMargin">
         <span className="normalText ">{title}</span>
-        <span className="libraryListElementInfoAuthor ">
+        <span className="otherInfoText ">
           {type} • {artist}
         </span>
       </div>

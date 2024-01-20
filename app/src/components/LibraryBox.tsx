@@ -10,8 +10,8 @@ export function LibraryBox() {
       </div>
       <div id="libraryList">
         <LibraryListElement
-          title="Towards the Lonely Wind"
-          artist="Blissing Stratus"
+          title="Towards the Lodd dsf nely Wind"
+          artist="Blissing Stratusfffffff ffffffffffffffffff"
           type="Album"
           imgPath="/bs1.png"
         />
