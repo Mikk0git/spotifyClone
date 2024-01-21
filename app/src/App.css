@@ -9,7 +9,7 @@
     "library main"
     "player player";
   grid-template-columns: 340px minmax(340px, auto);
-  grid-template-rows: 100px minmax(70%, auto) minmax(auto, 150px);
+  grid-template-rows: 100px minmax(70%, auto) minmax(auto, 100px);
   padding: 7px;
   gap: 7px;
   height: calc(100vh - 14px);
@@ -17,13 +17,6 @@
 
 .textMargin {
   margin-left: 15px;
-}
-
-#playerBox {
-  grid-area: player;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .appBox {

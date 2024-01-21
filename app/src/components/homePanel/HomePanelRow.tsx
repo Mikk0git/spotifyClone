@@ -11,7 +11,7 @@ export function HomePanelRow({ rowTitle }: HomePanelRowProps) {
       <h2>{rowTitle}</h2>
       <div className="homePanelList">
         <HomePanelElement
-          title="Towards the Lodd dsf nely Wind"
+          title="Towards the Lonely Wind"
           otherInfo="Blissing Stratus"
           imgPath="/bs1.png"
         />

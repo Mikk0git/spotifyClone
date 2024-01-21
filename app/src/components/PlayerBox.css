@@ -1,0 +1,45 @@
+#playerBox {
+  grid-area: player;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.playerSection {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#nowPlayingSong {
+  justify-content: flex-start;
+}
+
+#nowPlayingSong img {
+  width: 50px;
+  border-radius: 7%;
+}
+
+#songInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+#playerControls {
+  width: 40%;
+}
+
+#playerControlsButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#playerOtherOptions {
+  justify-content: flex-end;
+}
