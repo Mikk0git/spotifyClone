@@ -43,22 +43,16 @@ export interface Database {
       };
       liked_albums: {
         Row: {
-          album_id: number | null;
-          created_at: string;
-          id: number;
-          user_id: number | null;
+          album_id: number;
+          user_id: number;
         };
         Insert: {
-          album_id?: number | null;
-          created_at?: string;
-          id?: number;
-          user_id?: number | null;
+          album_id: number;
+          user_id: number;
         };
         Update: {
-          album_id?: number | null;
-          created_at?: string;
-          id?: number;
-          user_id?: number | null;
+          album_id?: number;
+          user_id?: number;
         };
         Relationships: [
           {
@@ -77,24 +71,48 @@ export interface Database {
           }
         ];
       };
-      liked_songs: {
+      liked_playlists: {
         Row: {
-          created_at: string;
-          id: number;
-          song_id: number | null;
-          user_id: number | null;
+          playlist_id: number;
+          user_id: number;
         };
         Insert: {
-          created_at?: string;
-          id?: number;
-          song_id?: number | null;
-          user_id?: number | null;
+          playlist_id: number;
+          user_id: number;
         };
         Update: {
-          created_at?: string;
-          id?: number;
-          song_id?: number | null;
-          user_id?: number | null;
+          playlist_id?: number;
+          user_id?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "liked_playlists_playlist_id_fkey";
+            columns: ["playlist_id"];
+            isOneToOne: false;
+            referencedRelation: "playlists";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "liked_playlists_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      liked_songs: {
+        Row: {
+          song_id: number;
+          user_id: number;
+        };
+        Insert: {
+          song_id: number;
+          user_id: number;
+        };
+        Update: {
+          song_id?: number;
+          user_id?: number;
         };
         Relationships: [
           {
@@ -109,6 +127,71 @@ export interface Database {
             columns: ["user_id"];
             isOneToOne: false;
             referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      playlists: {
+        Row: {
+          created_at: string;
+          id: number;
+          title: string | null;
+          user_id: number;
+        };
+        Insert: {
+          created_at?: string;
+          id?: number;
+          title?: string | null;
+          user_id: number;
+        };
+        Update: {
+          created_at?: string;
+          id?: number;
+          title?: string | null;
+          user_id?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "playlists_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      playlists_songs: {
+        Row: {
+          created_at: string;
+          id: number;
+          playlist_id: number | null;
+          song_id: number | null;
+        };
+        Insert: {
+          created_at?: string;
+          id?: number;
+          playlist_id?: number | null;
+          song_id?: number | null;
+        };
+        Update: {
+          created_at?: string;
+          id?: number;
+          playlist_id?: number | null;
+          song_id?: number | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "playlists_songs_playlist_id_fkey";
+            columns: ["playlist_id"];
+            isOneToOne: false;
+            referencedRelation: "playlists";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "playlists_songs_song_id_fkey";
+            columns: ["song_id"];
+            isOneToOne: false;
+            referencedRelation: "songs";
             referencedColumns: ["id"];
           }
         ];
@@ -177,7 +260,17 @@ export interface Database {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      get_liked_albums: {
+        Args: {
+          userid: number;
+        };
+        Returns: {
+          id: number;
+          title: string;
+          created_at: string;
+          username: string;
+        }[];
+      };
     };
     Enums: {
       [_ in never]: never;

@@ -24,10 +24,10 @@ export function HomePanelRow({ rowTitle }: HomePanelRowProps) {
     const fetchData = async () => {
       const { data, error } = await supabase
         .from("albums")
-        .select("id,title, users(username)");
+        .select("id,title, users!albums_user_id_fkey(username)");
 
       if (error) {
-        console.error("Error fetching albums:", error.message);
+        console.error("Error fetching albums:", error);
         setFetchError(error.message);
       } else {
         // console.log("Fetched Albums:", data);

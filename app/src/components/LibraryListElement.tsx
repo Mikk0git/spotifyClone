@@ -1,21 +1,36 @@
+import { useEffect, useState } from "react";
 import "./LibraryListElement.css";
-
+import supabase from "./supabaseClient";
 interface LibraryListElementProps {
   title: string;
   artist: string;
   type: string;
-  imgPath: string;
+  id: number;
 }
 
 export function LibraryListElement({
   title,
   artist,
   type,
-  imgPath,
+  id,
 }: LibraryListElementProps) {
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await supabase.storage
+        .from(`${type}Covers`)
+        .getPublicUrl(id + ".png");
+
+      setImageUrl(data?.publicUrl || null);
+    };
+
+    fetchData();
+  }, [id]);
+
   return (
     <div className="libraryListElement">
-      <img src={imgPath} alt="" className="libraryListImg" />
+      {imageUrl && <img src={imageUrl} alt="" className="libraryListImg" />}
       <div className="libraryListElementInfo textMargin">
         <span className="normalText ">{title}</span>
         <span className="otherInfoText ">
