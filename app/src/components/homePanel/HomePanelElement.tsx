@@ -1,5 +1,5 @@
 import "./HomePanelElement.css";
-import supabase from "../supabase";
+import supabase from "../supabaseClient";
 import { useEffect, useState } from "react";
 
 interface HomePanelElementProps {

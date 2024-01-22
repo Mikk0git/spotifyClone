@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./HomePanelRow.css";
 import { HomePanelElement } from "./HomePanelElement";
-import supabase from "../supabase";
+import supabase from "../supabaseClient";
 
 interface Album {
   title: string | null;
