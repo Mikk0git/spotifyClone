@@ -5,11 +5,11 @@ import supabase from "../supabase";
 
 interface Album {
   title: string | null;
-  // artist: string | null;
+  artist: string | null;
   id: number | null;
-  created_at: string;
-  release_date: string | null;
-  user_id: number | null;
+  // created_at: string;
+  // release_date: string | null;
+  // user_id: number | null;
 }
 
 interface HomePanelRowProps {
@@ -22,7 +22,9 @@ export function HomePanelRow({ rowTitle }: HomePanelRowProps) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data, error } = await supabase.from("albums").select("*");
+      const { data, error } = await supabase
+        .from("albums")
+        .select("id,title, users(username)");
 
       if (error) {
         console.error("Error fetching albums:", error.message);
@@ -32,11 +34,11 @@ export function HomePanelRow({ rowTitle }: HomePanelRowProps) {
 
         const mappedAlbums: Album[] = data.map((albumData) => ({
           title: albumData.title || "Unknown Title",
-          // artist: albumData.artist || "Unknown Artist",
+          artist: albumData.users?.username || "Unknown Artist",
           id: albumData.id,
-          created_at: albumData.created_at,
-          release_date: albumData.release_date,
-          user_id: albumData.user_id || 0,
+          // created_at: albumData.created_at,
+          // release_date: albumData.release_date,
+          // user_id: albumData.user_id || 0,
         }));
 
         setAlbums(mappedAlbums);
@@ -56,7 +58,7 @@ export function HomePanelRow({ rowTitle }: HomePanelRowProps) {
           {albums.map((album) => (
             <HomePanelElement
               title={album.title || "Unknown Title"}
-              artist={"album.artist" || "Unknown Artist"}
+              artist={album.artist || "Unknown Artist"}
               id={album.id || 0}
             />
           ))}
