@@ -1,5 +1,3 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
 import "./App.css";
 import { MenuBox } from "./components/MenuBox";
 import { LibraryBox } from "./components/LibraryBox";
@@ -7,7 +5,6 @@ import { PlayerBox } from "./components/PlayerBox";
 import { HomePanel } from "./components/homePanel/HomePanel";
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
     <>
