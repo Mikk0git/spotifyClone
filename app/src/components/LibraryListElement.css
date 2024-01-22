@@ -1,7 +1,8 @@
 .libraryListElement {
   display: flex;
-  margin: 5px 0 5px 0;
   cursor: pointer;
+  border-radius: 5px;
+  padding: 7px;
 }
 .libraryListImg {
   width: 50px;
@@ -14,4 +15,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.libraryListElement:hover {
+  background-color: var(--secondary-home-panel-element-bg);
 }

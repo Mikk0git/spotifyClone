@@ -1,5 +1,6 @@
 #menuBox {
   grid-area: menu;
+  padding: 16px;
   overflow: hidden;
   display: flex;
   align-items: center;

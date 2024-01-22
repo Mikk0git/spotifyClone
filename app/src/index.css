@@ -8,7 +8,8 @@
   --primary-font-color: #ffffff;
   --secondary-font-color: #858585;
   --button-color: #050505;
-  --home-panel-element-bg: #191919;
+  --primary-home-panel-element-bg: #191919;
+  --secondary-home-panel-element-bg: #282828;
 
   color-scheme: light dark;
   color: var(--primary-font-color);

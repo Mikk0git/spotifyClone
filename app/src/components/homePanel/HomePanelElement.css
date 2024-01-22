@@ -6,15 +6,23 @@
   line-break: auto;
   word-break: break-word;
   overflow: hidden;
-  background-color: var(--home-panel-element-bg);
+  background-color: var(--primary-home-panel-element-bg);
   width: 145px;
   height: 200px;
   padding: 16px;
   border-radius: 7px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .homePanelElement img {
   width: 145px;
+  width: 145px;
   border-radius: 6px;
+  aspect-ratio: 1/1;
+}
+
+.homePanelElement:hover {
+  background-color: var(--secondary-home-panel-element-bg);
+  transition: background-color 0.2s;
 }

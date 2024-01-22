@@ -2,7 +2,9 @@
   grid-area: library;
   overflow: hidden;
 }
-
+#menuBoxYourLibrary {
+  padding: 16px;
+}
 #libraryList {
   height: 98%;
   overflow-y: scroll;

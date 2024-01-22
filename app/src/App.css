@@ -22,7 +22,6 @@
 .appBox {
   background-color: var(--primary-bg-color);
   border-radius: 7px;
-  padding: 16px;
 }
 
 #mainBox {
@@ -35,7 +34,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  padding: 16px;
 }
 
 .buttonGroup {

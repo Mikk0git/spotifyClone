@@ -1,4 +1,5 @@
 #homePanel {
+  padding: 16px;
   overflow-y: scroll;
   height: 94.5%;
 }
