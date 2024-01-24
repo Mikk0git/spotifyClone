@@ -1,0 +1,35 @@
+#loginFormPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#loginForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 7px;
+  width: 30%;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: var(--primary-bg-color);
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.loginButton {
+  background-color: var(--spotify-green);
+  width: 100%;
+  height: 50px;
+  border-radius: 50px;
+  font-weight: 700;
+  color: black;
+}

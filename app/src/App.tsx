@@ -3,6 +3,8 @@ import { MenuBox } from "./components/MenuBox";
 import { LibraryBox } from "./components/LibraryBox";
 import { PlayerBox } from "./components/PlayerBox";
 import { HomePanel } from "./components/homePanel/HomePanel";
+import { Login } from "./components/loginOrRegister/Login";
+import { Register } from "./components/loginOrRegister/Register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
           </div>
           <Routes>
             <Route path="/" element={<HomePanel />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
         <PlayerBox />
