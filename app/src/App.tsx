@@ -3,11 +3,11 @@ import { MenuBox } from "./components/MenuBox";
 import { LibraryBox } from "./components/LibraryBox";
 import { PlayerBox } from "./components/PlayerBox";
 import { HomePanel } from "./components/homePanel/HomePanel";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-
   return (
-    <>
+    <Router>
       <div id="appContainer">
         <MenuBox />
 
@@ -32,11 +32,13 @@ function App() {
               </div>
             </div>
           </div>
-          <HomePanel />
+          <Routes>
+            <Route path="/" element={<HomePanel />} />
+          </Routes>
         </div>
         <PlayerBox />
       </div>
-    </>
+    </Router>
   );
 }
 
