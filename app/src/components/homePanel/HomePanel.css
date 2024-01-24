@@ -1,5 +1,33 @@
 #homePanel {
-  padding: 16px;
+  padding: 0 16px 16px 16px;
   overflow-y: scroll;
   height: 94.5%;
+}
+#homeTopBar h1 {
+  margin-bottom: 32px;
+}
+#randomSongsBar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 7px;
+}
+
+.randomSongsBarElement {
+  background-color: var(--primary-transparent-home-panel-element-bg);
+  border-radius: 7px;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  overflow: hidden;
+}
+.randomSongsBarElement:hover {
+  background-color: var(--secondary-transparent-home-panel-element-bg);
+  transition: background-color 0.2s;
+}
+
+.randomSongsBarElement img {
+  height: 45px;
+  width: 45px;
 }

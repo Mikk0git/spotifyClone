@@ -119,6 +119,13 @@ export interface Database {
             foreignKeyName: "liked_songs_song_id_fkey";
             columns: ["song_id"];
             isOneToOne: false;
+            referencedRelation: "random_songs";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "liked_songs_song_id_fkey";
+            columns: ["song_id"];
+            isOneToOne: false;
             referencedRelation: "songs";
             referencedColumns: ["id"];
           },
@@ -191,6 +198,13 @@ export interface Database {
             foreignKeyName: "playlists_songs_song_id_fkey";
             columns: ["song_id"];
             isOneToOne: false;
+            referencedRelation: "random_songs";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "playlists_songs_song_id_fkey";
+            columns: ["song_id"];
+            isOneToOne: false;
             referencedRelation: "songs";
             referencedColumns: ["id"];
           }
@@ -257,7 +271,35 @@ export interface Database {
       };
     };
     Views: {
-      [_ in never]: never;
+      random_songs: {
+        Row: {
+          album_id: number | null;
+          created_at: string | null;
+          id: number | null;
+          title: string | null;
+        };
+        Insert: {
+          album_id?: number | null;
+          created_at?: string | null;
+          id?: number | null;
+          title?: string | null;
+        };
+        Update: {
+          album_id?: number | null;
+          created_at?: string | null;
+          id?: number | null;
+          title?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "songs_album_id_fkey";
+            columns: ["album_id"];
+            isOneToOne: false;
+            referencedRelation: "albums";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
     };
     Functions: {
       get_liked_albums: {
