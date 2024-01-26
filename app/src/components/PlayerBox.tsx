@@ -1,6 +1,25 @@
 import "./PlayerBox.css";
+import { useContext, useEffect, useState } from "react";
+import { playingSongContext } from "../Context/playingSong";
+import supabase from "./supabaseClient";
 
 export function PlayerBox() {
+  const [songUrl, setSongUrl] = useState("");
+  const playingSong = useContext(playingSongContext);
+  // console.log("CONTEXT " + playingSong.playingSongId);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await supabase.storage
+        .from("songs")
+        .getPublicUrl(playingSong.playingSongId + ".mp3");
+
+      setSongUrl(data?.publicUrl);
+    };
+
+    fetchData();
+  }, [playingSong.playingSongId]);
+
   return (
     <div id="playerBox">
       <div className="playerSection" id="nowPlayingSong">
@@ -14,7 +33,7 @@ export function PlayerBox() {
         </button>
       </div>
       <div className="playerSection" id="playerControls">
-        <audio src=""></audio>
+        {songUrl && <audio src={songUrl} autoPlay controls />}
         <div id="playerControlsButtons">
           <button>
             <span className="material-symbols-outlined">shuffle</span>

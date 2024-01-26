@@ -8,9 +8,11 @@ import { Login } from "./components/loginOrRegister/Login";
 import { Register } from "./components/loginOrRegister/Register";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import supabase from "./components/supabaseClient";
+import { playingSongContext } from "./Context/playingSong";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [playingSongId, setPlayingSongId] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +21,7 @@ function App() {
       } = await supabase.auth.getUser();
 
       setIsSignedIn(user !== null);
+      setPlayingSongId("2");
     };
 
     fetchData();
@@ -26,55 +29,63 @@ function App() {
 
   return (
     <Router>
-      <div id="appContainer">
-        <MenuBox />
+      <playingSongContext.Provider value={{ playingSongId, setPlayingSongId }}>
+        <div id="appContainer">
+          <MenuBox />
 
-        <LibraryBox />
+          <LibraryBox />
 
-        <div id="mainBox" className="appBox">
-          <div id="mainButtonsBar">
-            <div id="mainArrows" className="buttonGroup">
-              <div className="mainBoxButton">
-                <span className="material-symbols-outlined">chevron_left</span>
-              </div>
-              <div className="mainBoxButton">
-                <span className="material-symbols-outlined">chevron_right</span>
-              </div>
-            </div>
-            <div id="mainOtherButtons" className="buttonGroup">
-              <div className="mainBoxButton">
-                <span className="material-symbols-outlined">notifications</span>
-              </div>
-              {isSignedIn ? (
-                <Link to="/account">
-                  <span className="material-symbols-outlined">person</span>
-                </Link>
-              ) : (
-                <div id="navbarLoginButtonBox">
-                  <Link to="/register">
-                    <div className="navbarLoginButton">Register</div>
-                  </Link>
-                  <Link to="/login">
-                    <div className="navbarLoginButton">Log in</div>
-                  </Link>
+          <div id="mainBox" className="appBox">
+            <div id="mainButtonsBar">
+              <div id="mainArrows" className="buttonGroup">
+                <div className="mainBoxButton">
+                  <span className="material-symbols-outlined">
+                    chevron_left
+                  </span>
                 </div>
-              )}
+                <div className="mainBoxButton">
+                  <span className="material-symbols-outlined">
+                    chevron_right
+                  </span>
+                </div>
+              </div>
+              <div id="mainOtherButtons" className="buttonGroup">
+                <div className="mainBoxButton">
+                  <span className="material-symbols-outlined">
+                    notifications
+                  </span>
+                </div>
+                {isSignedIn ? (
+                  <Link to="/account">
+                    <span className="material-symbols-outlined">person</span>
+                  </Link>
+                ) : (
+                  <div id="navbarLoginButtonBox">
+                    <Link to="/register">
+                      <div className="navbarLoginButton">Register</div>
+                    </Link>
+                    <Link to="/login">
+                      <div className="navbarLoginButton">Log in</div>
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
+            <Routes>
+              <Route path="/" element={<HomePanel />} />
+              <Route
+                path="/login"
+                element={<Login setIsSignedIn={setIsSignedIn} />}
+              />
+              <Route
+                path="/register"
+                element={<Register setIsSignedIn={setIsSignedIn} />}
+              />
+            </Routes>
           </div>
-          <Routes>
-            <Route path="/" element={<HomePanel />} />
-            <Route
-              path="/login"
-              element={<Login setIsSignedIn={setIsSignedIn} />}
-            />
-            <Route
-              path="/register"
-              element={<Register setIsSignedIn={setIsSignedIn} />}
-            />
-          </Routes>
+          <PlayerBox />
         </div>
-        <PlayerBox />
-      </div>
+      </playingSongContext.Provider>
     </Router>
   );
 }
