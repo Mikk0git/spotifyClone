@@ -50,7 +50,14 @@ function App() {
                   <span className="material-symbols-outlined">person</span>
                 </Link>
               ) : (
-                <Link to="/login">login</Link>
+                <div id="navbarLoginButtonBox">
+                  <Link to="/register">
+                    <div className="navbarLoginButton">Register</div>
+                  </Link>
+                  <Link to="/login">
+                    <div className="navbarLoginButton">Log in</div>
+                  </Link>
+                </div>
               )}
             </div>
           </div>

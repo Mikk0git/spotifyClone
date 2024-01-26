@@ -1,4 +1,4 @@
-import { SyntheticEvent } from "react";
+import { SyntheticEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import supabase from "../supabaseClient";
@@ -7,6 +7,8 @@ interface RegisterProps {
   setIsSignedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export function Register({ setIsSignedIn }: RegisterProps) {
+  const [formError, setFormError] = useState("");
+
   const navigate = useNavigate();
 
   const handleRegister = async (e: SyntheticEvent) => {
@@ -16,29 +18,32 @@ export function Register({ setIsSignedIn }: RegisterProps) {
     console.log(data);
     const { email, password } = data;
 
-    const { data: dormData, error: formError } = await supabase.auth.signUp({
-      email: email as string,
-      password: password as string,
-    });
+    const { data: registerData, error: formError } = await supabase.auth.signUp(
+      {
+        email: email as string,
+        password: password as string,
+      }
+    );
 
     if (formError) {
       console.error("Error signing up:", formError);
+      setFormError(formError.message as string);
     } else {
-      console.log(dormData);
+      console.log(registerData);
+      navigate("/");
+
+      setIsSignedIn(true);
     }
-
-    (e.target as HTMLFormElement).reset();
-    navigate("/");
-
-    setIsSignedIn(true);
   };
 
   return (
     <div id="loginFormPage">
-      <h1 className="veryBigText">
+      <h1 className="veryBigText ">
         Sign up to start <br />
         listening
       </h1>
+      <p className="lowerLineHeight">{formError}</p>
+
       <form onSubmit={handleRegister} id="loginForm">
         <input type="text" name="email" placeholder="Email" />
         <input type="password" name="password" placeholder="Password" />
@@ -46,7 +51,10 @@ export function Register({ setIsSignedIn }: RegisterProps) {
         <button className="loginButton">Sign up</button>
       </form>
       <p>
-        Already have an account? <Link to={"/login"}>Login</Link>
+        Already have an account?{" "}
+        <Link to={"/login"} className="linkUnderline">
+          Login
+        </Link>
       </p>
     </div>
   );

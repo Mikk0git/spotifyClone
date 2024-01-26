@@ -32,7 +32,7 @@ a:visited {
   color: var(--spotify-green);
   text-decoration: inherit;
 }
-a:hover {
+.linkUnderline:hover {
   text-decoration: underline;
 }
 
