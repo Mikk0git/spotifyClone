@@ -3,18 +3,78 @@ import { useContext, useEffect, useState } from "react";
 import { playingSongContext } from "../Context/playingSong";
 import supabase from "./supabaseClient";
 
+interface Song {
+  title: string | null;
+  album_title: string | null | undefined;
+  album_id: number | null | undefined;
+  artist: string | null | undefined;
+}
+
 export function PlayerBox() {
   const [songUrl, setSongUrl] = useState("");
+  const [albumCoverUrl, setAlbumCoverUrl] = useState("");
+  const [songData, setSongData] = useState<Song>({
+    title: null,
+    album_title: null,
+    album_id: null,
+    artist: null,
+  });
+
   const playingSong = useContext(playingSongContext);
-  // console.log("CONTEXT " + playingSong.playingSongId);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await supabase.storage
+      //fetching the song
+      const { data: songData } = await supabase.storage
         .from("songs")
         .getPublicUrl(playingSong.playingSongId + ".mp3");
 
-      setSongUrl(data?.publicUrl);
+      setSongUrl(songData?.publicUrl);
+
+      // I dont know why but when i fetch all the data in one query I get an error
+      // This code looks awful but it works
+      const { data: songs, error: songsError } = await supabase
+        .from("songs")
+        .select("title, albums(title, id)")
+        .eq("id", playingSong.playingSongId);
+
+      if (songsError) {
+        console.error(songsError);
+      } else {
+        if (songs && songs.length > 0) {
+          const song = songs[0];
+
+          const { data: albums, error: albumsError } = await supabase
+            .from("albums")
+            .select("users!albums_user_id_fkey(username)")
+            .eq("id", String(song.albums?.id));
+
+          if (albumsError) {
+            console.error(albumsError);
+          } else {
+            if (albums && albums.length > 0) {
+              const album = albums[0];
+
+              const mappedSong = {
+                title: song.title,
+                album_title: song.albums?.title,
+                album_id: song.albums?.id,
+                artist: album.users?.username,
+              };
+
+              setSongData(mappedSong);
+
+              //fetching the album cover
+              const { data } = await supabase.storage
+                .from("albumCovers")
+                .getPublicUrl(song.albums?.id + ".png");
+
+              // console.log("Fetched AlbumCover URL:", data);
+              setAlbumCoverUrl(data?.publicUrl);
+            }
+          }
+        }
+      }
     };
 
     fetchData();
@@ -23,10 +83,10 @@ export function PlayerBox() {
   return (
     <div id="playerBox">
       <div className="playerSection" id="nowPlayingSong">
-        <img src="./bs2.png" alt="" />
+        {albumCoverUrl && <img src={albumCoverUrl} alt="" />}
         <div id="songInfo">
-          <span className="normalText">Towards the Lonely Wind</span>
-          <span className="otherInfoText">Towards the Lonely Wind</span>
+          <span className="normalText">{songData.title}</span>
+          <span className="otherInfoText">{songData.artist}</span>
         </div>
         <button>
           <span className="material-symbols-outlined">favorite</span>
