@@ -39,8 +39,8 @@ export function LibraryBox() {
         return;
       }
 
-      console.log("Fetched Albums in library:", albumsData);
-      console.log("Fetched Playlists in library:", playlistsData);
+      // console.log("Fetched Albums in library:", albumsData);
+      // console.log("Fetched Playlists in library:", playlistsData);
 
       const mappedAlbums: SongGroup[] = albumsData.map((albumData) => ({
         title: albumData.albums?.title || "Unknown Title",
@@ -70,7 +70,7 @@ export function LibraryBox() {
         return 0; // Handle the case where created_at is null or undefined
       });
 
-      console.log("Combined Song Groups:", combinedSongGroups);
+      // console.log("Combined Song Groups:", combinedSongGroups);
 
       setSongGroups(combinedSongGroups);
     };
