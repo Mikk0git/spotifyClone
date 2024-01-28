@@ -44,7 +44,7 @@ export function Login({ setIsSignedIn }: LoginProps) {
       </form>
       <p>
         Don't have an account?{" "}
-        <Link to={"/register"} className="linkUnderline">
+        <Link to={"/register"} className="linkUnderline styledLink">
           Sign up
         </Link>
       </p>

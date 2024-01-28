@@ -10,7 +10,15 @@
   margin-bottom: 20px;
 }
 
+.menuBoxList {
+  width: 100%;
+}
+
 .menuBoxElement {
+  width: 100%;
+}
+.menuBoxElement a {
   display: flex;
   align-items: center;
+  width: 100%;
 }

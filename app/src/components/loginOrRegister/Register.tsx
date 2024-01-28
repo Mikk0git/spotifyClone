@@ -52,7 +52,7 @@ export function Register({ setIsSignedIn }: RegisterProps) {
       </form>
       <p>
         Already have an account?{" "}
-        <Link to={"/login"} className="linkUnderline">
+        <Link to={"/login"} className="linkUnderline styledLink">
           Login
         </Link>
       </p>

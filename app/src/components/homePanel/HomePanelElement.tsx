@@ -1,6 +1,7 @@
 import "./HomePanelElement.css";
 import supabase from "../supabaseClient";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface HomePanelElementProps {
   title: string;
@@ -25,10 +26,14 @@ export function HomePanelElement({ title, artist, id }: HomePanelElementProps) {
   }, [id]);
 
   return (
-    <div className="homePanelElement">
-      {albumCoverUrl && <img src={albumCoverUrl} alt="" />}
-      <span className="normalText homePanelElementNormalText">{title}</span>
-      <span className="otherInfoText homePanelElementOtherText">{artist}</span>
-    </div>
+    <Link to={`/album/${id}`}>
+      <div className="homePanelElement">
+        {albumCoverUrl && <img src={albumCoverUrl} alt="" />}
+        <span className="normalText homePanelElementNormalText">{title}</span>
+        <span className="otherInfoText homePanelElementOtherText">
+          {artist}
+        </span>
+      </div>
+    </Link>
   );
 }

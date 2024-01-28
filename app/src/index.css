@@ -28,9 +28,14 @@ a,
 a:active,
 a:hover,
 a:visited {
-  font-weight: 500;
-  color: var(--spotify-green);
-  text-decoration: inherit;
+  text-decoration: none;
+  color: var(--primary-font-color);
+}
+
+.styledLink {
+  font-weight: 500 !important;
+  color: var(--spotify-green) !important;
+  text-decoration: inherit !important;
 }
 .linkUnderline:hover {
   text-decoration: underline;

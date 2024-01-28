@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./LibraryListElement.css";
 import supabase from "./supabaseClient";
+import { Link } from "react-router-dom";
 interface LibraryListElementProps {
   title: string;
   artist: string;
@@ -29,14 +30,16 @@ export function LibraryListElement({
   }, [id]);
 
   return (
-    <div className="libraryListElement">
-      {imageUrl && <img src={imageUrl} alt="" className="libraryListImg" />}
-      <div className="libraryListElementInfo textMargin">
-        <span className="normalText ">{title}</span>
-        <span className="otherInfoText ">
-          {type} • {artist}
-        </span>
+    <Link to={`/${type}/${id}`}>
+      <div className="libraryListElement">
+        {imageUrl && <img src={imageUrl} alt="" className="libraryListImg" />}
+        <div className="libraryListElementInfo textMargin">
+          <span className="normalText ">{title}</span>
+          <span className="otherInfoText ">
+            {type} • {artist}
+          </span>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }

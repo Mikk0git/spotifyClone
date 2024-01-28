@@ -215,18 +215,21 @@ export interface Database {
           album_id: number | null;
           created_at: string;
           id: number;
+          order_number: number | null;
           title: string | null;
         };
         Insert: {
           album_id?: number | null;
           created_at?: string;
           id?: number;
+          order_number?: number | null;
           title?: string | null;
         };
         Update: {
           album_id?: number | null;
           created_at?: string;
           id?: number;
+          order_number?: number | null;
           title?: string | null;
         };
         Relationships: [
@@ -302,17 +305,7 @@ export interface Database {
       };
     };
     Functions: {
-      get_liked_albums: {
-        Args: {
-          userid: number;
-        };
-        Returns: {
-          id: number;
-          title: string;
-          created_at: string;
-          username: string;
-        }[];
-      };
+      [_ in never]: never;
     };
     Enums: {
       [_ in never]: never;

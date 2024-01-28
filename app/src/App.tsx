@@ -73,6 +73,7 @@ function App() {
             </div>
             <Routes>
               <Route path="/" element={<HomePanel />} />
+              <Route path="/album/:id" element={<HomePanel />} />
               <Route
                 path="/login"
                 element={<Login setIsSignedIn={setIsSignedIn} />}

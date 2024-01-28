@@ -13,6 +13,7 @@
   border-radius: 7px;
   cursor: pointer;
   transition: background-color 0.2s;
+  /* color: white; */
 }
 
 .homePanelElement img {
