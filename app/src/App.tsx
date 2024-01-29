@@ -9,6 +9,7 @@ import { Register } from "./components/loginOrRegister/Register";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import supabase from "./components/supabaseClient";
 import { playingSongContext } from "./Context/playingSong";
+import { SongGroupPage } from "./components/songGroupPage/SongGroupPage";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -73,7 +74,9 @@ function App() {
             </div>
             <Routes>
               <Route path="/" element={<HomePanel />} />
-              <Route path="/album/:id" element={<HomePanel />} />
+              {/* <Route path="/album/:id" element={<SongGroupPage />} />
+              <Route path="/playlist/:id" element={<SongGroupPage />} /> */}
+              <Route path="/:type/:id" element={<SongGroupPage />} />
               <Route
                 path="/login"
                 element={<Login setIsSignedIn={setIsSignedIn} />}

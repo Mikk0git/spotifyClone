@@ -36,7 +36,7 @@ export function HomePanel() {
     fetchData();
   }, []);
   return (
-    <div id="homePanel">
+    <div className="homePanel">
       <div id="homeTopBar">
         <h1 className="lowerLineHeight">Good evening</h1>
         {songs && (

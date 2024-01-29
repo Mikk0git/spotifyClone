@@ -1,0 +1,51 @@
+#songGroupPage {
+  overflow-y: scroll;
+  height: 90.5%;
+  padding: 0 0 0 16px;
+}
+
+#songGroup {
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 16px;
+}
+#songGroupInfo {
+  margin-bottom: 16px;
+}
+.songGroupImg {
+  width: 210px;
+  border-radius: 5px;
+}
+
+#songGroupList {
+  padding: 16px;
+}
+
+.songGroupListElement {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* height: 100px; */
+  border-radius: 5px;
+  padding: 5px;
+  gap: 16px;
+  cursor: pointer;
+  /* background-color: var(--primary-transparent-home-panel-element-bg); */
+}
+
+.songGroupListElement:hover {
+  background-color: var(--secondary-transparent-home-panel-element-bg);
+}
+
+.songGroupListElementOrderNumber {
+  padding: 0 16px 0 16px;
+}
+
+.songGroupListElementInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
