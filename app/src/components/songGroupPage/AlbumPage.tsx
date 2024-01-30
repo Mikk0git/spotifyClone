@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./SongGroupPage.css";
 import { useContext, useEffect, useState } from "react";
 import supabase from "../supabaseClient";
@@ -14,6 +14,7 @@ interface Album {
   id: number | null;
   title: string | null | undefined;
   artist: string | null | undefined;
+  artist_id: number | null | undefined;
 }
 
 export function AlbumPage() {
@@ -36,7 +37,7 @@ export function AlbumPage() {
 
         const { data: albums, error: albumsError } = await supabase
           .from("albums")
-          .select("id, title, user: users!albums_user_id_fkey(username)")
+          .select("id, title, user: users!albums_user_id_fkey(username,id)")
           .eq("id", Number(id));
 
         if (albumsError) {
@@ -48,6 +49,7 @@ export function AlbumPage() {
             id: album.id,
             title: album.title,
             artist: album.user?.username,
+            artist_id: album.user?.id,
           };
 
           setAlbum(mappedAlbum);
@@ -97,17 +99,23 @@ export function AlbumPage() {
       </div>
       <div id="songGroupList">
         {songs.map((song) => (
-          <div
-            key={song.id}
-            className="songGroupListElement"
-            onClick={() => PlayElement(song.id)}
-          >
-            <span className="songGroupListElementOrderNumber">
+          <div key={song.id} className="songGroupListElement">
+            <span
+              className="songGroupListElementOrderNumber"
+              onClick={() => PlayElement(song.id)}
+            >
               {song.order_number}
             </span>
             <div className="songGroupListElementInfo">
-              <span className=" normalText">{song.title}</span>
-              <span className=" ">{album?.artist}</span>
+              <span
+                className=" normalText"
+                onClick={() => PlayElement(song.id)}
+              >
+                {song.title}
+              </span>
+              <Link to={`/user/${album?.artist_id}`}>
+                <span className=" ">{album?.artist}</span>
+              </Link>
             </div>
           </div>
         ))}
