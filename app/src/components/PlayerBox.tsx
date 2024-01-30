@@ -1,5 +1,5 @@
 import "./PlayerBox.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { playingSongContext } from "../Context/playingSong";
 import supabase from "./supabaseClient";
 
@@ -11,6 +11,8 @@ interface Song {
 }
 
 export function PlayerBox() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [songUrl, setSongUrl] = useState("");
   const [albumCoverUrl, setAlbumCoverUrl] = useState("");
   const [songData, setSongData] = useState<Song>({
@@ -21,6 +23,23 @@ export function PlayerBox() {
   });
 
   const playingSong = useContext(playingSongContext);
+
+  useEffect(() => {
+    if (playingSong.playingSongId) {
+      setIsPlaying(true);
+    }
+  }, [playingSong]);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+    }
+    setIsPlaying((prevState) => !prevState);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -93,32 +112,34 @@ export function PlayerBox() {
         </button>
       </div>
       <div className="playerSection" id="playerControls">
-        {songUrl && <audio src={songUrl} autoPlay controls />}
+        {songUrl && <audio ref={audioRef} src={songUrl} autoPlay />}
         <div id="playerControlsButtons">
-          <button>
+          {/* <button>
             <span className="material-symbols-outlined">shuffle</span>
-          </button>
+          </button> */}
           <button>
             <span className="material-symbols-outlined">skip_previous</span>
           </button>
-          <button>
-            <span className="material-symbols-outlined">play_circle</span>
+          <button onClick={togglePlay}>
+            <span className="material-symbols-outlined">
+              {isPlaying ? "pause_circle" : "play_circle"}
+            </span>
           </button>
           <button>
             <span className="material-symbols-outlined">skip_next</span>
           </button>
-          <button>
+          {/* <button>
             <span className="material-symbols-outlined">repeat</span>
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="playerSection" id="playerOtherOptions">
-        <button>
+        {/* <button>
           <span className="material-symbols-outlined">slideshow</span>
         </button>
         <button>
           <span className="material-symbols-outlined">queue_music</span>
-        </button>
+        </button> */}
         <div id="volumeControls">
           <span className="material-symbols-outlined">volume_up</span>
         </div>

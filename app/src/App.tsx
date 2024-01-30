@@ -23,7 +23,7 @@ function App() {
       } = await supabase.auth.getUser();
 
       setIsSignedIn(user !== null);
-      setPlayingSongId("2");
+      setPlayingSongId("");
     };
 
     fetchData();
