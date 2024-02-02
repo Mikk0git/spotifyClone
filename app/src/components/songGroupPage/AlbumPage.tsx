@@ -5,16 +5,16 @@ import supabase from "../supabaseClient";
 import { playingSongContext } from "../../Context/playingSong";
 
 interface Song {
-  id: number | null | undefined;
+  id: string | null | undefined;
   title: string | undefined;
   order_number: number | undefined;
 }
 
 interface Album {
-  id: number | null;
+  id: string | null;
   title: string | null | undefined;
   artist: string | null | undefined;
-  artist_id: number | null | undefined;
+  artist_id: string | null | undefined;
 }
 
 export function AlbumPage() {
@@ -38,7 +38,7 @@ export function AlbumPage() {
         const { data: albums, error: albumsError } = await supabase
           .from("albums")
           .select("id, title, user: users!albums_user_id_fkey(username,id)")
-          .eq("id", Number(id));
+          .eq("id", id || "Unknown Album ID");
 
         if (albumsError) {
           console.error("Error fetching albums:", albumsError);
@@ -57,7 +57,7 @@ export function AlbumPage() {
           const { data: songs, error: songsError } = await supabase
             .from("songs")
             .select("id, title, order_number")
-            .eq("album_id", Number(id));
+            .eq("album_id", id || "Unknown Song ID");
 
           if (songsError) {
             console.error("Error fetching songs:", songsError);
@@ -79,7 +79,7 @@ export function AlbumPage() {
     fetchData();
   }, [id]);
 
-  function PlayElement(song_id: number | null | undefined) {
+  function PlayElement(song_id: string | null | undefined) {
     if (song_id !== null && song_id !== undefined) {
       console.log(`Playing Id: ${song_id}`);
       setPlayingSongId(String(song_id));

@@ -6,7 +6,7 @@ import supabase from "../supabaseClient";
 interface Album {
   title: string | null;
   artist: string | null;
-  id: number | null;
+  id: string | null;
   // created_at: string;
   // release_date: string | null;
   // user_id: number | null;
@@ -59,7 +59,7 @@ export function HomePanelRow({ rowTitle }: HomePanelRowProps) {
             <HomePanelElement
               title={album.title || "Unknown Title"}
               artist={album.artist || "Unknown Artist"}
-              id={album.id || 0}
+              id={album.id || null}
             />
           ))}
         </div>

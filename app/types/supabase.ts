@@ -12,24 +12,24 @@ export interface Database {
       albums: {
         Row: {
           created_at: string;
-          id: number;
+          id: string;
           release_date: string | null;
           title: string | null;
-          user_id: number | null;
+          user_id: string | null;
         };
         Insert: {
           created_at?: string;
-          id?: number;
+          id?: string;
           release_date?: string | null;
           title?: string | null;
-          user_id?: number | null;
+          user_id?: string | null;
         };
         Update: {
           created_at?: string;
-          id?: number;
+          id?: string;
           release_date?: string | null;
           title?: string | null;
-          user_id?: number | null;
+          user_id?: string | null;
         };
         Relationships: [
           {
@@ -43,16 +43,16 @@ export interface Database {
       };
       liked_albums: {
         Row: {
-          album_id: number;
-          user_id: number;
+          album_id: string;
+          user_id: string;
         };
         Insert: {
-          album_id: number;
-          user_id: number;
+          album_id: string;
+          user_id: string;
         };
         Update: {
-          album_id?: number;
-          user_id?: number;
+          album_id?: string;
+          user_id?: string;
         };
         Relationships: [
           {
@@ -73,16 +73,16 @@ export interface Database {
       };
       liked_playlists: {
         Row: {
-          playlist_id: number;
-          user_id: number;
+          playlist_id: string;
+          user_id: string;
         };
         Insert: {
-          playlist_id: number;
-          user_id: number;
+          playlist_id: string;
+          user_id: string;
         };
         Update: {
-          playlist_id?: number;
-          user_id?: number;
+          playlist_id?: string;
+          user_id?: string;
         };
         Relationships: [
           {
@@ -103,16 +103,16 @@ export interface Database {
       };
       liked_songs: {
         Row: {
-          song_id: number;
-          user_id: number;
+          song_id: string;
+          user_id: string;
         };
         Insert: {
-          song_id: number;
-          user_id: number;
+          song_id: string;
+          user_id: string;
         };
         Update: {
-          song_id?: number;
-          user_id?: number;
+          song_id?: string;
+          user_id?: string;
         };
         Relationships: [
           {
@@ -141,21 +141,21 @@ export interface Database {
       playlists: {
         Row: {
           created_at: string;
-          id: number;
+          id: string;
           title: string | null;
-          user_id: number;
+          user_id: string | null;
         };
         Insert: {
           created_at?: string;
-          id?: number;
+          id?: string;
           title?: string | null;
-          user_id: number;
+          user_id?: string | null;
         };
         Update: {
           created_at?: string;
-          id?: number;
+          id?: string;
           title?: string | null;
-          user_id?: number;
+          user_id?: string | null;
         };
         Relationships: [
           {
@@ -170,21 +170,18 @@ export interface Database {
       playlists_songs: {
         Row: {
           created_at: string;
-          id: number;
-          playlist_id: number | null;
-          song_id: number | null;
+          playlist_id: string;
+          song_id: string;
         };
         Insert: {
           created_at?: string;
-          id?: number;
-          playlist_id?: number | null;
-          song_id?: number | null;
+          playlist_id: string;
+          song_id: string;
         };
         Update: {
           created_at?: string;
-          id?: number;
-          playlist_id?: number | null;
-          song_id?: number | null;
+          playlist_id?: string;
+          song_id?: string;
         };
         Relationships: [
           {
@@ -212,23 +209,23 @@ export interface Database {
       };
       songs: {
         Row: {
-          album_id: number | null;
+          album_id: string | null;
           created_at: string;
-          id: number;
+          id: string;
           order_number: number | null;
           title: string | null;
         };
         Insert: {
-          album_id?: number | null;
+          album_id?: string | null;
           created_at?: string;
-          id?: number;
+          id?: string;
           order_number?: number | null;
           title?: string | null;
         };
         Update: {
-          album_id?: number | null;
+          album_id?: string | null;
           created_at?: string;
-          id?: number;
+          id?: string;
           order_number?: number | null;
           title?: string | null;
         };
@@ -245,52 +242,57 @@ export interface Database {
       users: {
         Row: {
           created_at: string;
-          email: string | null;
           first_name: string | null;
-          id: number;
+          id: string;
           last_name: string | null;
-          pass_hash: string | null;
           username: string | null;
         };
         Insert: {
           created_at?: string;
-          email?: string | null;
           first_name?: string | null;
-          id?: number;
+          id: string;
           last_name?: string | null;
-          pass_hash?: string | null;
           username?: string | null;
         };
         Update: {
           created_at?: string;
-          email?: string | null;
           first_name?: string | null;
-          id?: number;
+          id?: string;
           last_name?: string | null;
-          pass_hash?: string | null;
           username?: string | null;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "users_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
     };
     Views: {
       random_songs: {
         Row: {
-          album_id: number | null;
+          album_id: string | null;
           created_at: string | null;
-          id: number | null;
+          id: string | null;
+          order_number: number | null;
           title: string | null;
         };
         Insert: {
-          album_id?: number | null;
+          album_id?: string | null;
           created_at?: string | null;
-          id?: number | null;
+          id?: string | null;
+          order_number?: number | null;
           title?: string | null;
         };
         Update: {
-          album_id?: number | null;
+          album_id?: string | null;
           created_at?: string | null;
-          id?: number | null;
+          id?: string | null;
+          order_number?: number | null;
           title?: string | null;
         };
         Relationships: [

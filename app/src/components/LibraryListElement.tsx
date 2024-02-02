@@ -6,7 +6,7 @@ interface LibraryListElementProps {
   title: string;
   artist: string;
   type: string;
-  id: number;
+  id: string;
 }
 
 export function LibraryListElement({
@@ -27,7 +27,7 @@ export function LibraryListElement({
     };
 
     fetchData();
-  }, [id]);
+  }, [id, type]);
 
   return (
     <Link to={`/${type}/${id}`}>

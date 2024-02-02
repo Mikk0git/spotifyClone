@@ -5,9 +5,9 @@ import { HomePanelRandomSongElement } from "./HomePanelRandomSongElement";
 import supabase from "../supabaseClient";
 
 interface Song {
-  id: number | null;
+  id: string | null;
   title: string;
-  album_id: number | undefined;
+  album_id: string;
 }
 
 export function HomePanel() {
@@ -26,7 +26,7 @@ export function HomePanel() {
         const mappedSongs: Song[] = songData.map((songData) => ({
           id: songData.id,
           title: songData.title || "Unknown Title",
-          album_id: songData.albums?.id,
+          album_id: songData.albums?.id || "Unknown Album ID",
         }));
 
         setSongs(mappedSongs);

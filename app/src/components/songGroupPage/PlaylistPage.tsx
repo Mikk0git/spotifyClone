@@ -5,18 +5,18 @@ import supabase from "../supabaseClient";
 import { playingSongContext } from "../../Context/playingSong";
 
 interface Song {
-  id: number | null | undefined;
+  id: string | null | undefined;
   title: string | undefined;
   order_number: number | undefined;
   album_title: string | undefined;
-  album_id: number | null | undefined;
+  album_id: string | null | undefined;
   album_cover_url: string | undefined;
   artist: string | undefined;
-  artist_id: number | null | undefined;
+  artist_id: string | null | undefined;
 }
 
 interface Playlist {
-  id: number | null;
+  id: string | null | undefined;
   title: string | null | undefined;
   artist: string | null | undefined;
 }
@@ -33,7 +33,7 @@ export function PlaylistPage() {
       try {
         const { data } = await supabase.storage
           .from(`playlistCovers`)
-          .getPublicUrl(id + ".png");
+          .getPublicUrl(String(id) + ".png");
 
         setImageUrl(data?.publicUrl || null);
 
@@ -41,7 +41,7 @@ export function PlaylistPage() {
         const { data: playlists, error: playlistsError } = await supabase
           .from("playlists")
           .select("id, title, user: users!playlists_user_id_fkey(username)")
-          .eq("id", Number(id));
+          .eq("id", String(id));
 
         if (playlistsError) {
           console.error("Error fetching playlists:", playlistsError);
@@ -61,7 +61,7 @@ export function PlaylistPage() {
             .select(
               "songs(id,title,order_number,albums(title,id,users!albums_user_id_fkey(username,id)))"
             ) //todo change order number
-            .eq("playlist_id", Number(id));
+            .eq("playlist_id", String(id));
 
           if (songsError) {
             console.error("Error fetching songs:", songsError);
@@ -97,7 +97,7 @@ export function PlaylistPage() {
     fetchData();
   }, [id]);
 
-  function PlayElement(song_id: number | null | undefined) {
+  function PlayElement(song_id: string | null | undefined) {
     if (song_id !== null && song_id !== undefined) {
       console.log(`Playing Id: ${song_id}`);
       setPlayingSongId(String(song_id));

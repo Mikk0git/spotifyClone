@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 interface HomePanelElementProps {
   title: string;
   artist: string;
-  id: number;
+  id: string | null;
 }
 
 export function HomePanelElement({ title, artist, id }: HomePanelElementProps) {

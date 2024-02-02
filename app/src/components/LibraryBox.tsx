@@ -8,7 +8,7 @@ interface SongGroup {
   user: string | null;
   created_at: string | undefined;
   type: "album" | "playlist";
-  id: number | null;
+  id: string | null | undefined;
 }
 
 export function LibraryBox() {
@@ -20,14 +20,14 @@ export function LibraryBox() {
         .select(
           "album_id,albums(title,created_at, users!albums_user_id_fkey(username))"
         )
-        .eq("user_id", "1"); // Replace with the actual user ID
+        .eq("user_id", "2bd7c640-3bc9-4b3d-a3fb-5c3fe74cbac7"); // Replace with the actual user ID
 
       const { data: playlistsData, error: playlistsError } = await supabase
         .from("liked_playlists")
         .select(
           "playlist_id,playlists!inner(title,created_at,users!playlists_user_id_fkey(username))"
         )
-        .eq("user_id", "1");
+        .eq("user_id", "2bd7c640-3bc9-4b3d-a3fb-5c3fe74cbac7");
 
       if (albumsError) {
         console.error("Error fetching albums:", albumsError);
@@ -91,7 +91,7 @@ export function LibraryBox() {
               title={songGroup.title || "Unknown Title"}
               artist={songGroup.user || "Unknown User"}
               type={songGroup.type}
-              id={songGroup.id || 0}
+              id={songGroup.id || "undefined"}
             />
           ))}
         </div>

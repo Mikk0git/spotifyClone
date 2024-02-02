@@ -6,7 +6,7 @@ import supabase from "./supabaseClient";
 interface Song {
   title: string | null;
   album_title: string | null | undefined;
-  album_id: number | null | undefined;
+  album_id: string | null | undefined;
   artist: string | null | undefined;
 }
 
@@ -44,45 +44,47 @@ export function PlayerBox() {
   useEffect(() => {
     const fetchData = async () => {
       //fetching the song
-      const { data: songData } = await supabase.storage
-        .from("songs")
-        .getPublicUrl(playingSong.playingSongId + ".mp3");
+      if (playingSong.playingSongId) {
+        const { data: songData } = await supabase.storage
+          .from("songs")
+          .getPublicUrl(playingSong.playingSongId + ".mp3");
 
-      setSongUrl(songData?.publicUrl);
+        setSongUrl(songData?.publicUrl);
 
-      // I dont know why but when i fetch all the data in one query I get an error
-      // This code looks awful but it works
-      const { data: songs, error: songsError } = await supabase
-        .from("songs")
-        .select("title, albums(title, id)")
-        .eq("id", playingSong.playingSongId);
+        // I dont know why but when i fetch all the data in one query I get an error
+        // This code looks awful but it works
 
-      if (songsError) {
-        console.error(songsError);
-      } else {
-        if (songs && songs.length > 0) {
-          const song = songs[0];
+        const { data: songs, error: songsError } = await supabase
+          .from("songs")
+          .select("title, albums(title, id)")
+          .eq("id", playingSong.playingSongId);
 
-          const { data: albums, error: albumsError } = await supabase
-            .from("albums")
-            .select("users!albums_user_id_fkey(username)")
-            .eq("id", String(song.albums?.id));
+        if (songsError) {
+          console.error(songsError);
+        } else {
+          if (songs && songs.length > 0) {
+            const song = songs[0];
 
-          if (albumsError) {
-            console.error(albumsError);
-          } else {
-            if (albums && albums.length > 0) {
-              const album = albums[0];
+            const { data: albums, error: albumsError } = await supabase
+              .from("albums")
+              .select("users!albums_user_id_fkey(username)")
+              .eq("id", String(song.albums?.id));
 
-              const mappedSong = {
-                title: song.title,
-                album_title: song.albums?.title,
-                album_id: song.albums?.id,
-                artist: album.users?.username,
-              };
+            if (albumsError) {
+              console.error(albumsError);
+            } else {
+              if (albums && albums.length > 0) {
+                const album = albums[0];
 
-              setSongData(mappedSong);
+                const mappedSong = {
+                  title: song.title,
+                  album_title: song.albums?.title,
+                  album_id: song.albums?.id,
+                  artist: album.users?.username,
+                };
 
+                setSongData(mappedSong);
+              }
               //fetching the album cover
               const { data } = await supabase.storage
                 .from("albumCovers")

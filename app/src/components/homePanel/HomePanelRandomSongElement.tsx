@@ -5,9 +5,9 @@ import { useContext } from "react";
 import { playingSongContext } from "../../Context/playingSong";
 
 interface Song {
-  id: number | null;
+  id: string | null;
   title: string;
-  album_id: number | undefined;
+  album_id: string | undefined;
 }
 
 export function HomePanelRandomSongElement({ title, album_id, id }: Song) {
