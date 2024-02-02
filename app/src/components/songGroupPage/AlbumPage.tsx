@@ -113,9 +113,10 @@ export function AlbumPage() {
               >
                 {song.title}
               </span>
-              <Link to={`/user/${album?.artist_id}`}>
-                <span className=" ">{album?.artist}</span>
-              </Link>
+
+              <span className=" ">
+                <Link to={`/user/${album?.artist_id}`}>{album?.artist}</Link>
+              </span>
             </div>
           </div>
         ))}

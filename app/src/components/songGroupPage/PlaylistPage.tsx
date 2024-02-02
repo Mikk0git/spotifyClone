@@ -140,9 +140,10 @@ export function PlaylistPage() {
               >
                 {song.title}
               </span>
-              <Link to={`/user/${song.artist_id}`}>
-                <span className="">{song?.artist}</span>
-              </Link>
+
+              <span className="">
+                <Link to={`/user/${song.artist_id}`}>{song?.artist}</Link>
+              </span>
             </div>
 
             <div className="songGroupListElementAlbumTitle">
